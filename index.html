@@ -1,889 +1,1 @@
-<!DOCTYPE html>
-<html lang="sq">
-<head>
-    <meta name="google-site-verification" content="lbZ1wRb_eYthbg-sfhE1uniIKTOkqel6J00k6n7oX7g"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DJ KRENY | Official Website</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-</head>
-
-
-<style>
-    .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9));
-}
-    
-    
-    .lang-btn {
-    font-size: 18px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    opacity: 0.6;
-}
-
-.lang-btn.active {
-    opacity: 1;
-    background: linear-gradient(135deg, #f59e0b, #fbbf24);
-    box-shadow: 0 0 15px rgba(251,191,36,0.6);
-    transform: scale(1.1);
-}
- 
-  
- :root {
-  --bg-main: #0f0f0f;
-  --bg-secondary: #181818;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --card-border: rgba(255, 255, 255, 0.1);
-
-  --text-main: #ffffff;
-  --text-sub: #b3b3b3;
-
-  --input-bg: #1e1e1e;
-}
-
-/* GLOBAL */
-body {
-  background: var(--bg-main);
-  color: var(--text-main);
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-  transition: background 0.4s ease, color 0.4s ease;
-  
-  /* SHTESA PER ANTI-COPY */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Lejon shkrimin vetem te forma e rezervimit */
-input, textarea, select {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
-    
-    
-#preloader { pointer-events: none; }
-   
- * {
-    scroll-behavior: smooth;
-}
-
-/* smooth fade kur hapet faqja */
-body {
-    animation: fadeIn 1s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-   
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-
-
-/* ZBATIMI I VARIABLAVE */
-
-.glass-card {
-    background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(25px);
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 
-        0 10px 40px rgba(0,0,0,0.6),
-        0 0 30px rgba(251,191,36,0.1);
-}
-
-   .glass-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 
-        0 10px 40px rgba(0,0,0,0.5),
-        0 0 30px rgba(251,191,36,0.2);
-}
-   
-   
-h1, h2, h3, .text-white { color: var(--text-main) !important; }
-p, .text-gray-200, .text-gray-500 { color: var(--text-sub) !important; }
-
-section { transition: background 0.4s ease; }
-
-input, select {
-    background-color: var(--input-bg) !important;
-    color: var(--text-main) !important;
-}
-    
-/* EFEKTET */
-.neon-hover:hover {
-    color: #fbbf24;
-    text-shadow: 0 0 7px #fbbf24, 0 0 21px #fbbf24;
-    transition: all 0.4s ease-in-out;
-}
-
-@keyframes slide-up {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
-}
-
-.sticky-player { animation: slide-up 1s ease-out; }
-
-@keyframes logo-gold-pulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); filter: blur(15px); }
-    50% { opacity: 0.6; transform: scale(1.15); filter: blur(25px); }
-}
-
-.animate-logo-gold-pulse { animation: logo-gold-pulse 4s infinite ease-in-out; }
- /* 🔥 FORCE DARK MODE (TAILWIND FIX) */
-html, body {
-    background-color: #0f0f0f !important;
-    color: #ffffff !important;
-}
-
-    
-    
-    body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at 30% 40%, rgba(251,191,36,0.15), transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(255,0,120,0.12), transparent 50%);
-    filter: blur(80px);
-    animation: moveLights 12s infinite alternate ease-in-out;
-    z-index: -1;
-}
-
-@keyframes moveLights {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-    50% {
-        transform: translate(-30px, 20px) scale(1.1);
-    }
-    100% {
-        transform: translate(30px, -20px) scale(1.05);
-    }
-}
-    
-    
-
- /* 🔥 NEXT LEVEL FINAL FIX */
-
-body {
-    background: radial-gradient(circle at 20% 20%, rgba(251,191,36,0.08), transparent 40%),
-                radial-gradient(circle at 80% 30%, rgba(255,0,150,0.06), transparent 40%),
-                radial-gradient(circle at 50% 80%, rgba(0,200,255,0.05), transparent 50%),
-                #050505;
-    background-attachment: fixed;
-}
-    
-
-/* heq çdo të bardhë nga Tailwind */
-[class*="bg-white"],
-.bg-white {
-    background-color: transparent !important;
-}
-
-/* glass premium */
-.glass-card {
-    background: rgba(255, 255, 255, 0.04) !important;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 30px rgba(255, 200, 0, 0.1);
-}
-
-/* button glow */
-button {
-    box-shadow: 0 0 20px rgba(251,191,36,0.3);
-}
-
-button:hover {
-    box-shadow: 0 0 40px rgba(251,191,36,0.6);
-}
- 
-    
-    ::selection {
-    background: #fbbf24;
-    color: black;
-}
-    
-    .reveal {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: 0.8s ease;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-    
-</style>
-
-
-    
-<body>
-<!-- PRELOADER -->
-<div id="preloader" class="fixed inset-0 z-[99999] flex items-center justify-center bg-black/90 backdrop-blur-xl">
-
-    <div class="text-center">
-
-        <!-- LOGO WRAPPER -->
-        <div class="relative w-28 h-28 mx-auto mb-6">
-
-            <!-- Glow ring -->
-            <div class="absolute inset-0 rounded-full bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 blur-2xl opacity-60 animate-pulse"></div>
-
-            <!-- Rotating border -->
-            <div class="absolute inset-0 rounded-full border-2 border-amber-400/40 animate-spin-slow"></div>
-
-            <!-- Logo -->
-            <img src="https://i.postimg.cc/5tQn3x85/641736505-18256467829289016-143216903978284011-n.jpg"
-                 class="relative w-full h-full rounded-full border-2 border-amber-500 shadow-2xl scale-95 animate-zoomIn">
-
-        </div>
-
-        <!-- SPINNER -->
-        <div class="w-8 h-8 border-2 border-amber-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
-
-        <!-- TEXT -->
-        <p class="mt-5 text-amber-400 text-xs tracking-[6px] font-semibold animate-pulse">
-            LOADING EXPERIENCE
-        </p>
-
-    </div>
-</div>
-    
-    
-   <div id="successPopup" class="fixed inset-0 flex items-center justify-center bg-black/70 opacity-0 pointer-events-none transition-all duration-500 z-[9999]">
-    
-    <div id="popupBox" class="bg-[#111] p-8 rounded-3xl text-center border border-amber-500/30 shadow-2xl scale-75 transition-all duration-500">
-        
-        <div class="text-5xl mb-4 animate-bounce">🎉🎊</div>
-        
-        <h2 class="text-xl text-amber-500 font-bold mb-2">
-            U DËRGUA!
-        </h2>
-        
-        <p class="text-gray-300 text-sm">
-            Kërkesa u dërgua me sukses
-        </p>
-
-    </div>
-</div>
-    
-    
-    
-    <nav class="p-4 md:px-10 flex justify-between items-center sticky top-0 z-50 glass-card">
-    <a href="#" class="flex items-center gap-3 group cursor-pointer transition-all duration-300 hover:scale-105">
-        <div class="relative flex items-center justify-center w-12 h-12 rounded-full p-0.5 border-2 border-amber-500/50">
-            <img src="https://i.postimg.cc/5tQn3x85/641736505-18256467829289016-143216903978284011-n.jpg" class="w-full h-full rounded-full object-cover relative z-10 bg-black">
-            <div class="absolute inset-0 bg-amber-500 rounded-full blur-lg opacity-30 animate-logo-gold-pulse"></div>
-        </div>
-        <div class="flex flex-col leading-none">
-            <h1 class="text-xl font-black tracking-tighter text-white uppercase neon-hover">DJ <span class="text-amber-500">KRENY</span></h1>
-        </div>
-    </a>
-     
-     
-
-    <div class="flex items-center gap-2 bg-white/5 p-1 rounded-xl border border-white/10">
-
-    <button onclick="setLang('sq')" class="lang-btn" id="btn-sq">🇦🇱</button>
-    <button onclick="setLang('en')" class="lang-btn" id="btn-en">🇬🇧</button>
-
-</div>
-
-   
-    <div class="hidden md:flex gap-6 font-bold text-xs tracking-widest ml-4">
-        <a href="#sherbimet" data-key="services">SHËRBIME</a>
-        <a href="#rezervo" data-key="book">REZERVO</a>
-    </div>
-</div>
-</nav>
-  
-
-<section class="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
-    <div class="absolute inset-0 z-0 overflow-hidden bg-black">
-        <video autoplay muted loop playsinline class="w-full h-full object-cover scale-110 blur-[2px] brightness-85">
-            <source src="https://www.image2url.com/r2/default/videos/1776715504746-af4464d2-e575-4e0a-9d4e-413dbad7e68f.mp4" type="video/mp4">
-        </video>
-    </div>
-
-    <div class="relative z-10 text-center px-4 mt-20">
-        <h2 class="text-xs font-black tracking-[8px] uppercase text-amber-500 mb-4" data-key="hero_title">
-            ENERGJI & PASION
-        </h2>
-        <h1 data-key="hero_subtitle" class="text-5xl md:text-8xl font-black mb-8 tracking-tighter uppercase leading-none">
-            ENERGJI <br> <span class="text-amber-500">& PASION</span>
-        </h1>
-        <a href="#rezervo" data-key="hero_btn" class="bg-amber-500 text-black px-12 py-5 rounded-full font-black hover:bg-amber-400 transition shadow-[0_0_30px_rgba(251,191,36,0.3)] uppercase text-sm tracking-widest inline-block">
-            Rezervo Tani
-        </a>
-    </div>
-</section>
-
-<section id="sherbimet" class="py-24 px-6">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="glass-card reveal p-10 rounded-[2.5rem] text-center group hover:border-amber-500/50 transition-all border border-white/5">
-            <i class="fas fa-glass-cheers text-4xl text-amber-500 mb-6 block"></i>
-            <h3 class="text-xl font-black mb-4 uppercase tracking-tighter" data-key="wedding_title">DASMA</h3>
-            <p class="text-gray-200 text-sm leading-relaxed opacity-90" data-key="wedding_desc">Atmosferë unike për natën tuaj më të rëndësishme.</p>
-        </div>
-
-        <div class="glass-card p-10 rounded-[2.5rem] text-center group hover:border-amber-500/50 transition-all border border-white/5">
-            <i class="fas fa-bolt text-4xl text-amber-500 mb-6 block"></i>
-            <h3 class="text-xl font-black mb-4 uppercase tracking-tighter" data-key="nightlife_title">NIGHTLIFE</h3>
-            <p class="text-gray-200 text-sm leading-relaxed opacity-90" data-key="nightlife_desc">Energji maksimale në klubet më të mira.</p>
-        </div>
-
-        <div class="glass-card p-10 rounded-[2.5rem] text-center group hover:border-amber-500/50 transition-all border border-white/5">
-            <i class="fas fa-birthday-cake text-4xl text-amber-500 mb-6 block"></i>
-            <h3 class="text-xl font-black mb-4 uppercase tracking-tighter" data-key="events_title_main">EVENTET</h3>
-            <p class="text-gray-200 text-sm leading-relaxed opacity-90" data-key="events_desc">Muzikë për çdo festë dhe event privat.</p>
-        </div>
-
-    </div>
-</section>
-
-<section id="instagram-section" class="py-24 px-6 transition-colors duration-500 bg-[#050505]">
-    <div class="max-w-6xl mx-auto text-center">
-        
-        <h2 class="text-3xl font-black mb-4 tracking-widest uppercase text-white" data-key="insta_title">
-            Ndjeni <span class="text-amber-500">Atmosferën</span>
-        </h2>
-        <p class="text-gray-500 mb-12 text-sm tracking-[3px]">@DJKRENY_OFFICIAL</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            
-            <div class="relative group overflow-hidden rounded-[2rem] aspect-square cursor-pointer border border-white/5 lightbox-trigger" data-video-src="https://www.image2url.com/r2/default/videos/1776734577539-57e2c772-4d3e-4081-ac54-de81a4b35938.mp4">
-                <video autoplay muted loop playsinline class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100">
-                    <source src="https://www.image2url.com/r2/default/videos/1776734577539-57e2c772-4d3e-4081-ac54-de81a4b35938.mp4" type="video/mp4">
-                </video>
-                <div class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300">
-                    <i class="fas fa-search-plus text-5xl text-white"></i>
-                </div>
-            </div>
-
-            <div class="relative group overflow-hidden rounded-[2rem] aspect-square cursor-pointer border border-white/5 lightbox-trigger" data-video-src="https://www.image2url.com/r2/default/videos/1776734560706-68fd677f-1abe-4d3f-a03f-aa2e69886f14.mp4">
-                <video autoplay muted loop playsinline class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100">
-                    <source src="https://www.image2url.com/r2/default/videos/1776734560706-68fd677f-1abe-4d3f-a03f-aa2e69886f14.mp4" type="video/mp4">
-                </video>
-                <div class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300">
-                    <i class="fas fa-search-plus text-5xl text-white"></i>
-                </div>
-            </div>
-
-            <div class="relative group overflow-hidden rounded-[2rem] aspect-square cursor-pointer border border-white/5 lightbox-trigger" data-video-src="https://www.image2url.com/r2/default/videos/1776734533839-8462d007-6847-4ca4-9762-401ceb94bd57.mp4">
-                <video autoplay muted loop playsinline class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100">
-                    <source src="https://www.image2url.com/r2/default/videos/1776734533839-8462d007-6847-4ca4-9762-401ceb94bd57.mp4" type="video/mp4">
-                </video>
-                <div class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300">
-                    <i class="fas fa-search-plus text-5xl text-white"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="relative inline-block text-center">
-    <button id="videoLinksBtn" data-key="view_video_btn" class="inline-flex items-center gap-3 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 px-10 py-4 rounded-full font-black hover:scale-105 transition shadow-2xl uppercase text-xs tracking-[3px] text-black group">
-    <i class="fas fa-list-ul text-lg transition-transform group-hover:rotate-180"></i>
-    Zgjidh një Video
-</button>
-    
-    <div id="videoLinksMenu" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-72 bg-black/95 backdrop-blur-xl border border-white/10 p-4 rounded-[2rem] shadow-2xl opacity-0 scale-95 pointer-events-none transition-all duration-300 z-[110]">
-    
-    <p class="text-amber-500 text-[10px] tracking-widest uppercase mb-4 font-bold" data-key="events_given_title">
-    EVENTET E DHENA
-</p>
-    
-    <div class="space-y-3">
-        <a href="https://www.facebook.com/share/v/1Guor6wBud/" target="_blank" class="flex items-center gap-3 text-white text-[11px] font-bold p-3 rounded-xl bg-white/5 hover:bg-amber-500 hover:text-black transition group">
-            <i class="fab fa-facebook text-lg"></i> 
-            <span data-key="event_1">SHIKO VIDEON 1 (FB)</span>
-        </a>
-        
-        <a href="instagram:/https://reel/DT27ciHDPDz/" 
-   onclick="setTimeout(function(){
-       window.location.href='https://www.instagram.com/reel/DT27ciHDPDz/';
-   }, 500);"
-   class="flex items-center gap-3 text-white text-[11px] font-bold p-3 rounded-xl bg-white/5 hover:bg-amber-500 hover:text-black transition group">
-
-    <i class="fab fa-instagram text-lg"></i> 
-    <span>SHIKO VIDEON (IG)</span>
-
-</a>
-
-        <a href="https://www.instagram.com/reel/DBvyXGItvAh/" target="_blank" class="flex items-center gap-3 text-white text-[11px] font-bold p-3 rounded-xl bg-white/5 hover:bg-amber-500 hover:text-black transition group">
-            <i class="fab fa-instagram text-lg"></i> 
-            <span data-key="event_3">SHIKO VIDEON 3 (IG)</span>
-        </a>
-
-        <div class="pt-2 pb-1 border-t border-white/10 mt-2">
-            <p class="text-gray-500 text-[9px] tracking-widest uppercase font-bold" data-key="other_events">EVENTE TË TJERA</p>
-        </div>
-
-        <a href="https://www.instagram.com/reel/DVJmkyRDHvE/" target="_blank" class="flex items-center gap-3 text-white text-[11px] font-bold p-3 rounded-xl bg-white/5 hover:bg-amber-500 hover:text-black transition group">
-            <i class="fas fa-link text-sm text-amber-500 group-hover:text-black"></i> 
-            <span data-key="event_4">LINK SHTESË 1</span>
-        </a>
-        <a href="https://www.instagram.com/reel/DVlyt6oDOqT/" target="_blank" class="flex items-center gap-3 text-white text-[11px] font-bold p-3 rounded-xl bg-white/5 hover:bg-amber-500 hover:text-black transition group">
-            <i class="fas fa-link text-sm text-amber-500 group-hover:text-black"></i> 
-            <span data-key="event_5">LINK SHTESË 2</span>
-        </a>
-        <a href="https://www.instagram.com/reel/DVovxTMjINb/" target="_blank" class="flex items-center gap-3 text-white text-[11px] font-bold p-3 rounded-xl bg-white/5 hover:bg-amber-500 hover:text-black transition group">
-            <i class="fas fa-link text-sm text-amber-500 group-hover:text-black"></i> 
-            <span data-key="event_6">LINK SHTESË 3</span>
-        </a>
-    </div>
-</div>
-</section>
-
-<div id="lightbox" class="fixed inset-0 z-[999] bg-black/95 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
-    
-    <button onclick="mbyllLightbox()" class="absolute top-8 right-8 text-white text-5xl z-[1000] hover:text-amber-500 transition-transform active:scale-90 cursor-pointer">
-        <i class="fas fa-times-circle"></i>
-    </button>
-    
-    <div id="lightboxContent" class="relative max-w-[90%] max-h-[80%] flex items-center justify-center scale-95 transition-transform duration-300">
-        <video id="lightboxVideo" controls muted loop autoplay class="w-full h-full rounded-2xl shadow-2xl border border-white/10">
-            <source src="" type="video/mp4">
-        </video>
-    </div>
-</div>
-
-<script>
-    // Funksioni Global per mbylljen (punon nga HTML-ja direkt)
-    function mbyllLightbox() {
-        const lb = document.getElementById('lightbox');
-        const lbVid = document.getElementById('lightboxVideo');
-        const lbCont = document.getElementById('lightboxContent');
-        
-        lb.style.opacity = '0';
-        lb.style.pointerEvents = 'none';
-        lbCont.style.transform = 'scale(0.95)';
-        lbVid.pause();
-        lbVid.src = "";
-    }
-
-    // Funksioni per hapjen
-    document.querySelectorAll('.lightbox-trigger').forEach(item => {
-        item.addEventListener('click', function() {
-            const lb = document.getElementById('lightbox');
-            const lbVid = document.getElementById('lightboxVideo');
-            const lbCont = document.getElementById('lightboxContent');
-            const vSrc = this.getAttribute('data-video-src');
-            
-            lbVid.src = vSrc;
-            lb.style.opacity = '1';
-            lb.style.pointerEvents = 'auto';
-            lbCont.style.transform = 'scale(1)';
-            lbVid.play();
-        });
-    });
-
-    // Mbyllja kur shtypet pjesa e zeze jashte videos
-    document.getElementById('lightbox').addEventListener('click', function(e) {
-        if (e.target === this) {
-            mbyllLightbox();
-        }
-    });
-
-    // Kod per Menu-ne e butonit "Zgjidh nje video"
-    const vBtn = document.getElementById('videoLinksBtn');
-    const vMenu = document.getElementById('videoLinksMenu');
-    if(vBtn) {
-        vBtn.onclick = (e) => {
-            e.stopPropagation();
-            vMenu.classList.toggle('opacity-0');
-            vMenu.classList.toggle('pointer-events-none');
-            vMenu.classList.toggle('scale-95');
-        };
-    }
-    document.addEventListener('click', () => {
-        if(vMenu) vMenu.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
-    });
-</script>
-
-        
-    <section id="rezervo" class="py-24 px-6 transition-colors duration-500">
-    <div class="max-w-xl mx-auto glass-card p-10 rounded-[3rem] border border-white/5">
-        <h2 class="text-3xl font-black mb-8 tracking-tighter text-center" data-key="reserve_title">REZERVO <span class="text-amber-500">DATËN</span></h2>
-        
-        <form id="reservationForm" action="https://formspree.io/f/mjgjjdal" method="POST" class="flex flex-col gap-5">
-    <input type="text" name="name" data-placeholder-key="name" placeholder="Emri Juaj" required
-        class="w-full bg-white/10 text-white border border-white/20 rounded-2xl p-4 focus:outline-none focus:border-amber-500 transition">
-
-    <input type="tel" name="phone" data-placeholder-key="phone" placeholder="Numri i Telefonit" required
-        class="w-full bg-white/10 text-white border border-white/20 rounded-2xl p-4 focus:outline-none focus:border-amber-500 transition">
-
-    <div class="flex flex-col md:flex-row gap-5">
-    <div class="flex-1 bg-white/10 border border-white/20 rounded-2xl p-4 flex items-center">
-        <label class="text-gray-300 mr-4 text-sm whitespace-nowrap" data-key="reserve_date_label">Data:</label>
-        <input type="date" name="date" required 
-            class="bg-transparent text-white w-full outline-none cursor-pointer text-sm"
-            style="color-scheme: dark; filter: brightness(1.8);">
-    </div>
-
-    <div class="flex-1 bg-white/10 border border-white/20 rounded-2xl p-4 flex items-center">
-        <label class="text-gray-300 mr-4 text-sm whitespace-nowrap" data-key="reserve_time_label">Ora:</label>
-        <input type="time" name="time" required 
-            class="bg-transparent text-white w-full outline-none cursor-pointer text-sm"
-            style="color-scheme: dark; filter: brightness(1.8);">
-    </div>
-</div>
-
-<textarea name="message" data-placeholder-key="message" placeholder="Përshkruaj eventin...(psh.:fejesë, ditëlindje, sa persona, etj...)" 
-    rows="3"
-    class="w-full bg-white/10 text-white border border-white/20 rounded-2xl p-4 focus:outline-none focus:border-amber-500 transition resize-none mt-5"></textarea>
-
-
-    <button type="submit" class="w-full bg-amber-500 text-black font-black py-5 rounded-2xl hover:bg-amber-400 transition uppercase tracking-widest text-sm mt-2 shadow-lg" data-key="send">
-        Dërgo Kërkesën
-    </button>
-</form>
-
-
-<style>
-    /* Ky kod detyron ikonen e kalendarit te behet e bardhe ne cdo telefon */
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        filter: invert(1);
-        opacity: 3.0;
-        cursor: pointer;
-    }
-</style>
-</section>
-
-<script>
-// 1. DHËNAT E PËRKTHIMIT
-const translations = {
-    en: {
-        services: "SERVICES",
-        book: "BOOK",
-        hero_title: "ENERGY & PASSION",
-        hero_subtitle: "ENERGY & PASSION",
-        hero_btn: "BOOK NOW",
-        wedding_title: "WEDDING",
-        wedding_desc: "Unique atmosphere for your most important night.",
-        nightlife_title: "NIGHTLIFE",
-        nightlife_desc: "Maximum energy in the best clubs.",
-        events_title_main: "EVENTS",
-        events_desc: "Music for every party and private anniversary.",
-        insta_title: "FEEL THE ATMOSPHERE",
-        events_given_title: "EVENTS GIVEN",
-        other_events: "OTHER EVENTS",
-        event_1: "WATCH VIDEO 1 (FB)",
-        event_2: "WATCH VIDEO 2 (IG)",
-        event_3: "WATCH VIDEO 3 (IG)",
-        event_4: "ADDITIONAL EVENT 1",
-        event_5: "ADDITIONAL EVENT 2",
-        event_6: "ADDITIONAL EVENT 3",
-        view_video_btn: "CHOOSE A VIDEO",
-        reserve_title: "RESERVE DATE",
-        reserve_date_label: "Choose Date:",
-        reserve_time_label: "Choose Time:",
-        message: "Describe the event... (e.g., engagement, birthday, guests, etc.)",
-        send: "SEND REQUEST",
-        name: "Full Name",
-        phone: "Phone Number"
-    },
-    sq: {
-        services: "SHËRBIME",
-        book: "REZERVO",
-        hero_title: "ENERGJI & PASION",
-        hero_subtitle: "ENERGJI & PASION",
-        hero_btn: "REZERVO TANI",
-        wedding_title: "DASMA",
-        wedding_desc: "Atmosferë unike për natën tuaj më të rëndësishme.",
-        nightlife_title: "NIGHTLIFE",
-        nightlife_desc: "Energji maksimale në klubet më të mira.",
-        events_title_main: "EVENTET",
-        events_desc: "Muzikë për çdo festë dhe përvjetor privat.",
-        insta_title: "NDJENI ATMOSFERËN",
-        events_given_title: "EVENTET E DHENA",
-        other_events: "EVENTE TË TJERA",
-        event_1: "SHIKO VIDEON 1 (FB)",
-        event_2: "SHIKO VIDEON 2 (IG)",
-        event_3: "SHIKO VIDEON 3 (IG)",
-        event_4: "EVENT SHTESË 1",
-        event_5: "EVENT SHTESË 2",
-        event_6: "EVENT SHTESË 3",
-        view_video_btn: "ZGJIDH NJË VIDEO",
-        reserve_title: "REZERVO DATËN",
-        reserve_date_label: "Zgjidhni Datën:",
-        reserve_time_label: "Zgjidhni Orën:",
-        message: "Përshkruaj eventin... (psh.: fejesë, ditëlindje, sa persona, etj...)",
-        send: "DËRGO KËRKESËN",
-        name: "Emri Juaj",
-        phone: "Numri i Telefonit"
-    }
-};
-
-// 2. FUNKSIONI I PËRKTHIMIT
-function updateLanguage(lang) {
-    document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (translations[lang][key]) {
-            const icon = el.querySelector('i');
-            if (icon) {
-                el.innerHTML = ''; 
-                el.appendChild(icon);
-                el.appendChild(document.createTextNode(' ' + translations[lang][key]));
-            } else {
-                el.innerText = translations[lang][key];
-            }
-        }
-    });
-
-    document.querySelectorAll('[data-placeholder-key]').forEach(el => {
-        const key = el.getAttribute('data-placeholder-key');
-        if (translations[lang][key]) {
-            el.placeholder = translations[lang][key];
-        }
-    });
-}
-
-const langSelect = document.getElementById('lang-select');
-if (langSelect) {
-    langSelect.addEventListener('change', (e) => {
-        updateLanguage(e.target.value);
-    });
-}
-       
-
-       
-     function setLang(lang) {
-    localStorage.setItem("lang", lang);
-    updateLanguage(lang);
-
-    document.body.style.transition = "opacity 0.3s";
-    document.body.style.opacity = "0.7";
-
-    setTimeout(() => {
-        document.body.style.opacity = "1";
-    }, 200);
-
-    updateActiveLang(lang);
-}
-
-function updateActiveLang(lang) {
-    document.getElementById("btn-sq").classList.remove("active");
-    document.getElementById("btn-en").classList.remove("active");
-
-    if(lang === "sq") {
-        document.getElementById("btn-sq").classList.add("active");
-    } else {
-        document.getElementById("btn-en").classList.add("active");
-    }
-}
-
-/* load language automatically */
-window.addEventListener("load", () => {
-    const savedLang = localStorage.getItem("lang") || "sq";
-    updateLanguage(savedLang);
-    updateActiveLang(savedLang);
-});
-       
-       
-     
-// 3. PRELOADER (HAPJA E FAQES)
-function hidePreloader() {
-    const preloader = document.getElementById('preloader');
-    if (!preloader) return;
-
-    preloader.style.transition = "all 0.6s ease";
-    preloader.style.opacity = '0';
-    preloader.style.transform = 'scale(1.05)';
-
-    setTimeout(() => {
-        preloader.style.display = 'none';
-    }, 600);
-}
-
-// 🚀 MAIN LOAD (clean & pro)
-window.addEventListener("load", () => {
-
-    try {
-        // 🌍 LANGUAGE INIT
-        const savedLang = localStorage.getItem("lang") || "sq";
-        updateLanguage(savedLang);
-        updateActiveLang(savedLang);
-    } catch (e) {
-        console.error("Language error:", e);
-    }
-
-    // 🎬 hide preloader
-    hidePreloader();
-});
-
-
-// 🛟 FALLBACK (nëse ngec load)
-setTimeout(() => {
-    hidePreloader();
-}, 2500);
-
-
-// 💣 ERROR SAFETY (nuk ngelet kurrë)
-window.addEventListener("error", () => {
-    hidePreloader();
-});
-</script>
-
-
-      <footer class="relative py-8 px-6 border-t border-white/10 bg-[#050505] text-center mt-10 overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none">
-        <div class="w-48 h-48 bg-amber-500/5 blur-[80px] rounded-full absolute -top-10 left-1/2 -translate-x-1/2"></div>
-    </div>
-
-    <div class="relative z-10">
-        <div class="mb-4">
-            <h2 class="text-lg font-black tracking-tighter uppercase text-white">
-                DJ <span class="text-amber-500">KRENY</span>
-            </h2>
-            <div class="w-8 h-[1px] bg-amber-500/30 mx-auto mt-1"></div>
-        </div>
-
-        <div class="flex justify-center gap-4 mb-6">
-            
-            <a href="https://www.instagram.com/dj_kreny/" 
-   target="_blank" 
-   rel="noopener noreferrer"
-   class="group w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 transition-all duration-300 hover:scale-110 cursor-pointer">
-   <i class="fab fa-instagram text-base bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] bg-clip-text text-transparent"></i>
-</a>
-
-            <a href="https://www.facebook.com/deejay.kreny" target="_blank" rel="noopener noreferrer"
-               class="group w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 transition-all duration-300 hover:scale-110 cursor-pointer">
-                <i class="fab fa-facebook-f text-base text-[#1877F2]"></i>
-            </a>
-
-            <a href="https://wa.me/355697508830" target="_blank" rel="noopener noreferrer"
-               class="group w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 transition-all duration-300 hover:scale-110 cursor-pointer">
-                <i class="fab fa-whatsapp text-base text-[#25D366]"></i>
-            </a>
-        </div>
-
-        <p class="text-gray-500 text-[8px] tracking-[3px] uppercase opacity-50">
-            © 2026 DJ KRENY — <span class="text-amber-500">DEVELOPED FOR SUCCESS</span>
-        </p>
-    </div>
-</footer>
-
-
-
-        
-        <div id="copyWarning" class="fixed inset-0 flex items-center justify-center bg-black/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-all duration-300">
-    <div class="bg-[#111] border border-amber-500/30 rounded-2xl p-6 text-center shadow-2xl">
-        <h2 class="text-amber-500 text-xl font-bold mb-2">⚠️ VEPRIM I NDALUAR</h2>
-        <p class="text-gray-300">Ky veprim nuk mund të kryhet.</p>
-    </div>
-</div>
-        
-        <script>
-const warning = document.getElementById("copyWarning");
-
-function showWarning() {
-    warning.classList.remove("opacity-0", "pointer-events-none");
-    
-    setTimeout(() => {
-        warning.classList.add("opacity-0", "pointer-events-none");
-    }, 2000);
-}
-
-// 🚫 Disable right click
-document.addEventListener("contextmenu", function(e) {
-    e.preventDefault();
-    showWarning();
-});
-
-// 🚫 Disable copy (Ctrl + C)
-document.addEventListener("keydown", function(e) {
-    if ((e.ctrlKey && e.key === "c") || 
-        (e.ctrlKey && e.key === "u") || 
-        (e.ctrlKey && e.key === "s")) {
-        e.preventDefault();
-        showWarning();
-    }
-});
-
-// 🚫 Disable text selection attempt
-document.addEventListener("selectstart", function(e) {
-    e.preventDefault();
-    showWarning();
-});
-        
-        const elements = document.querySelectorAll('.reveal');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-    }
-  });
-});
-
-elements.forEach(el => observer.observe(el));
-        
-        
-        
-    document.getElementById('reservationForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Ndalo reload-in e menjehershem
-    
-    const form = this;
-    const formData = new FormData(form);
-
-    // 1. Dergo dhenat ne Formspree (Njoftimi)
-    fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
-    }).then(response => {
-        if (response.ok) {
-            // 2. Shperthe Konfetit 🎉🎊
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#fbbf24', '#ffffff', '#f59e0b']
-            });
-
-            // 3. Shfaq Pop-up-in profesional
-            Swal.fire({
-                title: 'SUKSES! 🎊',
-                text: 'Veprimi u krye me sukses. Rezervimi juaj u dërgua!',
-                icon: 'success',
-                background: '#111',
-                color: '#fff',
-                confirmButtonColor: '#fbbf24',
-                confirmButtonText: 'OK',
-                customClass: {
-                    popup: 'rounded-[2rem] border border-white/10'
-                }
-            }).then((result) => {
-                // 4. Reload automatik pas mbylljes se pop-up
-                if (result.isConfirmed) {
-                    window.location.reload();
-                }
-            });
-            
-            form.reset();
-        } else {
-            Swal.fire('Gabim', 'Ndodhi një problem, provo përsëri.', 'error');
-        }
-    }).catch(error => {
-        Swal.fire('Gabim', 'Lidhja dështoi.', 'error');
-    });
-});
-
-
-        
-</script>
-</body>
-</html>
+<!DOCTYPE html><html lang="sq"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    <title>DJ KRENY | Official Website</title>        <script src="https://cdn.tailwindcss.com"></script>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>    <link rel="stylesheet" href="style.css"></head>    <body>  <!-- Preloader Screen -->  <div id="preloader">    <div class="loader-brand">DJ KRENY</div>    <div class="loader-bar-container">      <div class="loader-bar"></div>    </div>  </div>      <!-- Site Wrapper -->  <div class="site-wrapper">        <nav class="p-4 md:px-10 flex justify-between items-center sticky top-0 z-50 nav-glass">      <a href="#" class="flex items-center gap-3 group cursor-pointer transition-all duration-300 hover:scale-105">          <div class="relative flex items-center justify-center w-12 h-12 rounded-full p-0.5 border-2 border-amber-500/50">              <img src="https://i.postimg.cc/5tQn3x85/641736505-18256467829289016-143216903978284011-n.jpg" class="w-full h-full rounded-full object-cover relative z-10 bg-black" alt="DJ Kreny">              <div class="absolute inset-0 bg-amber-500 rounded-full blur-lg opacity-30 animate-logo-gold-pulse"></div>          </div>          <div class="flex flex-col leading-none">              <h1 class="text-xl font-black tracking-tighter text-white uppercase neon-hover">DJ <span class="text-amber-500">KRENY</span></h1>          </div>      </a>             <div class="flex items-center gap-4">          <div class="hidden sm:flex items-center gap-4 text-white text-lg mr-2">              <a href="https://www.instagram.com/djkreny_official/" target="_blank" class="hover:text-amber-500 transition"><i class="fab fa-instagram"></i></a>              <a href="https://www.facebook.com/" target="_blank" class="hover:text-amber-500 transition"><i class="fab fa-facebook"></i></a>              <a href="https://wa.me/355697508830" target="_blank" class="hover:text-amber-500 transition"><i class="fab fa-whatsapp"></i></a>          </div>          <div class="flex items-center gap-2 bg-white/5 p-1 rounded-xl border border-white/10">              <button onclick="setLang('sq')" class="lang-btn flex items-center justify-center" id="btn-sq" title="Shqip">                  <img src="https://flagcdn.com/w40/al.png" width="24" alt="Shqip" class="rounded-sm object-cover">              </button>              <button onclick="setLang('en')" class="lang-btn flex items-center justify-center" id="btn-en" title="English">                  <img src="https://flagcdn.com/w40/gb.png" width="24" alt="English" class="rounded-sm object-cover">              </button>          </div>          <div class="hidden md:flex gap-6 font-bold text-xs tracking-widest ml-4">              <a href="#sherbimet" class="text-white hover:text-amber-500 transition" data-key="services">SHERBIME</a>              <a href="#videos" class="text-white hover:text-amber-500 transition" data-key="nav_videos">VIDEOS</a>              <a href="#contact" class="text-white hover:text-amber-500 transition" data-key="book">REZERVO</a>          </div>      </div>    </nav>    <section class="hero">      <div class="hero-overlay"></div>      <div class="hero-content px-4">          <h2 class="hero-tagline" data-key="hero_title">ENERGJI & PASION</h2>          <h1 data-key="hero_subtitle" class="hero-title">              ENERGJI <br> <span>& PASION</span>          </h1>          <div class="hero-btns mt-8">              <a href="#contact" data-key="hero_btn" class="bg-amber-500 text-black px-12 py-5 rounded-full font-black hover:bg-amber-400 transition shadow-[0_0_30px_rgba(251,191,36,0.3)] uppercase text-sm tracking-widest inline-block">                  REZERVO TANI              </a>          </div>      </div>    </section>    <section id="sherbimet" class="py-24 px-6">      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">          <div class="glass-card reveal p-10 rounded-[2.5rem] text-center group border border-white/5">              <i class="fas fa-glass-cheers text-4xl text-amber-500 mb-6 block"></i>              <h3 class="text-xl font-black mb-4 uppercase tracking-tighter text-white" data-key="wedding_title">DASMA</h3>              <p class="text-gray-400 text-sm leading-relaxed" data-key="wedding_desc">Atmosfere unike per naten tuaj me te rendesishme.</p>          </div>          <div class="glass-card reveal p-10 rounded-[2.5rem] text-center group border border-white/5">              <i class="fas fa-bolt text-4xl text-amber-500 mb-6 block"></i>              <h3 class="text-xl font-black mb-4 uppercase tracking-tighter text-white" data-key="nightlife_title">NIGHTLIFE</h3>              <p class="text-gray-400 text-sm leading-relaxed" data-key="nightlife_desc">Energji maksimale ne klubet me te mira.</p>          </div>          <div class="glass-card reveal p-10 rounded-[2.5rem] text-center group border border-white/5">              <i class="fas fa-birthday-cake text-4xl text-amber-500 mb-6 block"></i>              <h3 class="text-xl font-black mb-4 uppercase tracking-tighter text-white" data-key="events_title_main">EVENTET</h3>              <p class="text-gray-400 text-sm leading-relaxed" data-key="events_desc">Muzike per cdo feste dhe event privat.</p>          </div>      </div>    </section>    <section id="videos" class="section-padding reveal">      <div class="section-header">        <span class="section-subtitle" data-key="vid_sub">Media Production</span>        <h2 class="section-title" data-key="vid_title">Live <span>Performances</span> & Recaps</h2>      </div>            <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-amber-500/40 to-transparent my-6"></div>      <div class="videos-grid">        <div class="video-card">          <div class="video-wrapper">            <video class="w-full aspect-video object-cover rounded-xl shadow-md" preload="none" muted loop playsinline controls>              <source src="dj-kreny-videos/dj1.webm" type="video/webm"/>            </video>          </div>        </div>                <div class="video-card">          <div class="video-wrapper">            <video class="w-full aspect-video object-cover rounded-xl shadow-md" preload="none" muted loop playsinline controls>              <source src="dj-kreny-videos/dj2.webm" type="video/webm"/>            </video>          </div>        </div>                <div class="video-card">          <div class="video-wrapper">            <video class="w-full aspect-video object-cover rounded-xl shadow-md" preload="none" muted loop playsinline controls>              <source src="dj-kreny-videos/dj4.mp4" type="video/mp4"/>            </video>          </div>        </div>      </div>    </section>    <section id="contact" class="py-24 px-6 reveal">      <div class="max-w-6xl mx-auto contact-wrapper">        <div class="contact-info-panel">          <div class="mb-8">            <span class="text-amber-500 text-xs font-bold uppercase tracking-widest" data-key="contact_sub">Zyre Rezervimi</span>            <h2 class="text-4xl font-black text-white uppercase tracking-tight mt-2" data-key="contact_title">Le te Krijojme <span class="text-amber-500">Magji</span></h2>          </div>          <p class="text-gray-300 text-sm leading-relaxed mb-6" data-key="contact_desc">Gati per te siguruar nje eksperience muzikore unike per eventin tuaj? Na kontaktoni direkt ose plotesoni formen e rezervimit.</p>                    <div class="space-y-4 mb-6">              <a href="tel:+355697508830" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 shadow-lg w-full group">                  <div class="w-11 h-11 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-all">                      <i class="fa-solid fa-phone text-lg"></i>                  </div>                  <div class="flex flex-col text-left">                      <span class="text-[10px] uppercase tracking-wider font-black text-gray-500">Na telefono direkt</span>                      <span class="font-bold text-white text-sm md:text-base tracking-wide">+355 69 750 8830</span>                  </div>              </a>              <a href="mailto:djkreny87@gmail.com" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 shadow-lg w-full group">                  <div class="w-11 h-11 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-all">                      <i class="fa-solid fa-envelope text-lg"></i>                  </div>                  <div class="flex flex-col text-left">                      <span class="text-[10px] uppercase tracking-wider font-black text-gray-500">Dergo Email zyrtar</span>                      <span class="font-bold text-white text-sm md:text-base tracking-wide">djkreny87@gmail.com</span>                  </div>              </a>              <div class="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 shadow-lg w-full">                  <div class="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-gray-400">                      <i class="fa-solid fa-location-dot text-lg"></i>                  </div>                  <div class="flex flex-col text-left">                      <span class="text-[10px] uppercase tracking-wider font-black text-gray-500">Vendndodhja kryesore</span>                      <span class="font-bold text-gray-300 text-sm md:text-base tracking-wide" data-key="contact_loc">Fier, Shqiperi</span>                  </div>              </div>          </div>          <div class="flex justify-center items-center gap-10 sm:gap-12 text-3xl mt-6 border-t border-white/10 pt-6">    <a href="https://www.instagram.com/dj_kreny/" target="_blank" rel="noopener noreferrer" class="text-pink-600 dark:text-[#E1306C] transition-all duration-300 hover:scale-125">      <i class="fab fa-instagram"></i>  </a>  <span class="text-gray-500">•</span>  <a href="https://www.facebook.com/profile.php?id=100072456553999" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-[#1877F2] transition-all duration-300 hover:scale-125">      <i class="fab fa-facebook"></i>  </a>  <span class="text-gray-500">•</span>  <a href="https://wa.me/355697508830" target="_blank" rel="noopener noreferrer" class="text-green-600 dark:text-[#25D366] transition-all duration-300 hover:scale-125">      <i class="fab fa-whatsapp"></i>  </a></div>        </div>                <div class="booking-card">          <form id="bookingForm" action="https://formspree.io/f/xnjrwypz" method="POST">            <div class="form-group-grid">              <div class="form-control-wrapper">                <label class="form-label" data-key="lbl_name">Emri Plote *</label>                <input type="text" name="name" class="form-input" data-placeholder-key="placeholder_name" placeholder="Emer Mbiemer" required />              </div>                            <div class="form-control-wrapper">                <label class="form-label" data-key="lbl_phone">Numri i Telefonit *</label>                <div class="phone-container">                  <select name="prefix" class="prefix-select">                    <!-- EUROPE --><option value="+355">+355 (Albania)</option><option value="+376">+376 (Andorra)</option><option value="+43">+43 (Austria)</option><option value="+375">+375 (Belarus)</option><option value="+32">+32 (Belgium)</option><option value="+387">+387 (Bosnia and Herzegovina)</option><option value="+359">+359 (Bulgaria)</option><option value="+385">+385 (Croatia)</option><option value="+357">+357 (Cyprus)</option><option value="+420">+420 (Czech Republic)</option><option value="+45">+45 (Denmark)</option><option value="+372">+372 (Estonia)</option><option value="+358">+358 (Finland)</option><option value="+33">+33 (France)</option><option value="+49">+49 (Germany)</option><option value="+350">+350 (Gibraltar)</option><option value="+30">+30 (Greece)</option><option value="+36">+36 (Hungary)</option><option value="+354">+354 (Iceland)</option><option value="+353">+353 (Ireland)</option><option value="+39">+39 (Italy)</option><option value="+383">+383 (Kosovo)</option><option value="+371">+371 (Latvia)</option><option value="+423">+423 (Liechtenstein)</option><option value="+370">+370 (Lithuania)</option><option value="+352">+352 (Luxembourg)</option><option value="+356">+356 (Malta)</option><option value="+373">+373 (Moldova)</option><option value="+377">+377 (Monaco)</option><option value="+382">+382 (Montenegro)</option><option value="+31">+31 (Netherlands)</option><option value="+389">+389 (North Macedonia)</option><option value="+47">+47 (Norway)</option><option value="+48">+48 (Poland)</option><option value="+351">+351 (Portugal)</option><option value="+40">+40 (Romania)</option><option value="+7">+7 (Russia & Kazakhstan)</option><option value="+378">+378 (San Marino)</option><option value="+381">+381 (Serbia)</option><option value="+421">+421 (Slovakia)</option><option value="+386">+386 (Slovenia)</option><option value="+34">+34 (Spain)</option><option value="+46">+46 (Sweden)</option><option value="+41">+41 (Switzerland)</option><option value="+380">+380 (Ukraine)</option><option value="+44">+44 (United Kingdom)</option><option value="+379">+379 (Vatican City)</option><!-- NORTH AMERICA --><option value="+1">+1 (United States & Canada)</option><option value="+52">+52 (Mexico)</option><option value="+501">+501 (Belize)</option><option value="+502">+502 (Guatemala)</option><option value="+503">+503 (El Salvador)</option><option value="+504">+504 (Honduras)</option><option value="+505">+505 (Nicaragua)</option><option value="+506">+506 (Costa Rica)</option><option value="+507">+507 (Panama)</option><option value="+509">+509 (Haiti)</option><option value="+53">+53 (Cuba)</option><!-- SOUTH AMERICA --><option value="+54">+54 (Argentina)</option><option value="+591">+591 (Bolivia)</option><option value="+55">+55 (Brazil)</option><option value="+56">+56 (Chile)</option><option value="+57">+57 (Colombia)</option><option value="+593">+593 (Ecuador)</option><option value="+592">+592 (Guyana)</option><option value="+595">+595 (Paraguay)</option><option value="+51">+51 (Peru)</option><option value="+597">+597 (Suriname)</option><option value="+598">+598 (Uruguay)</option><option value="+58">+58 (Venezuela)</option><!-- ASIA --><option value="+93">+93 (Afghanistan)</option><option value="+374">+374 (Armenia)</option><option value="+994">+994 (Azerbaijan)</option><option value="+973">+973 (Bahrain)</option><option value="+880">+880 (Bangladesh)</option><option value="+975">+975 (Bhutan)</option><option value="+673">+673 (Brunei)</option><option value="+855">+855 (Cambodia)</option><option value="+86">+86 (China)</option><option value="+995">+995 (Georgia)</option><option value="+852">+852 (Hong Kong)</option><option value="+91">+91 (India)</option><option value="+62">+62 (Indonesia)</option><option value="+98">+98 (Iran)</option><option value="+964">+964 (Iraq)</option><option value="+972">+972 (Israel)</option><option value="+81">+81 (Japan)</option><option value="+962">+962 (Jordan)</option><option value="+965">+965 (Kuwait)</option><option value="+996">+996 (Kyrgyzstan)</option><option value="+856">+856 (Laos)</option><option value="+961">+961 (Lebanon)</option><option value="+853">+853 (Macau)</option><option value="+60">+60 (Malaysia)</option><option value="+960">+960 (Maldives)</option><option value="+976">+976 (Mongolia)</option><option value="+95">+95 (Myanmar)</option><option value="+977">+977 (Nepal)</option><option value="+850">+850 (North Korea)</option><option value="+968">+968 (Oman)</option><option value="+92">+92 (Pakistan)</option><option value="+970">+970 (Palestine)</option><option value="+63">+63 (Philippines)</option><option value="+974">+974 (Qatar)</option><option value="+966">+966 (Saudi Arabia)</option><option value="+65">+65 (Singapore)</option><option value="+82">+82 (South Korea)</option><option value="+94">+94 (Sri Lanka)</option><option value="+963">+963 (Syria)</option><option value="+886">+886 (Taiwan)</option><option value="+992">+992 (Tajikistan)</option><option value="+66">+66 (Thailand)</option><option value="+670">+670 (Timor-Leste)</option><option value="+90">+90 (Turkey)</option><option value="+993">+993 (Turkmenistan)</option><option value="+971">+971 (United Arab Emirates)</option><option value="+998">+998 (Uzbekistan)</option><option value="+84">+84 (Vietnam)</option><option value="+967">+967 (Yemen)</option><!-- AFRICA --><option value="+213">+213 (Algeria)</option><option value="+244">+244 (Angola)</option><option value="+229">+229 (Benin)</option><option value="+267">+267 (Botswana)</option><option value="+226">+226 (Burkina Faso)</option><option value="+257">+257 (Burundi)</option><option value="+237">+237 (Cameroon)</option><option value="+238">+238 (Cape Verde)</option><option value="+236">+236 (Central African Republic)</option><option value="+235">+235 (Chad)</option><option value="+269">+269 (Comoros)</option><option value="+242">+242 (Republic of the Congo)</option><option value="+243">+243 (Democratic Republic of the Congo)</option><option value="+253">+253 (Djibouti)</option><option value="+20">+20 (Egypt)</option><option value="+240">+240 (Equatorial Guinea)</option><option value="+291">+291 (Eritrea)</option><option value="+268">+268 (Eswatini)</option><option value="+251">+251 (Ethiopia)</option><option value="+241">+241 (Gabon)</option><option value="+220">+220 (Gambia)</option><option value="+233">+233 (Ghana)</option><option value="+224">+224 (Guinea)</option><option value="+245">+245 (Guinea-Bissau)</option><option value="+225">+225 (Ivory Coast)</option><option value="+254">+254 (Kenya)</option><option value="+266">+266 (Lesotho)</option><option value="+231">+231 (Liberia)</option><option value="+218">+218 (Libya)</option><option value="+261">+261 (Madagascar)</option><option value="+265">+265 (Malawi)</option><option value="+223">+223 (Mali)</option><option value="+222">+222 (Mauritania)</option><option value="+230">+230 (Mauritius)</option><option value="+212">+212 (Morocco)</option><option value="+258">+258 (Mozambique)</option><option value="+264">+264 (Namibia)</option><option value="+227">+227 (Niger)</option><option value="+234">+234 (Nigeria)</option><option value="+250">+250 (Rwanda)</option><option value="+221">+221 (Senegal)</option><option value="+248">+248 (Seychelles)</option><option value="+232">+232 (Sierra Leone)</option><option value="+252">+252 (Somalia)</option><option value="+27">+27 (South Africa)</option><option value="+211">+211 (South Sudan)</option><option value="+249">+249 (Sudan)</option><option value="+255">+255 (Tanzania)</option><option value="+228">+228 (Togo)</option><option value="+216">+216 (Tunisia)</option><option value="+256">+256 (Uganda)</option><option value="+260">+260 (Zambia)</option><option value="+263">+263 (Zimbabwe)</option><!-- OCEANIA --><option value="+61">+61 (Australia)</option><option value="+682">+682 (Cook Islands)</option><option value="+679">+679 (Fiji)</option><option value="+689">+689 (French Polynesia)</option><option value="+686">+686 (Kiribati)</option><option value="+692">+692 (Marshall Islands)</option><option value="+691">+691 (Micronesia)</option><option value="+674">+674 (Nauru)</option><option value="+687">+687 (New Caledonia)</option><option value="+64">+64 (New Zealand)</option><option value="+683">+683 (Niue)</option><option value="+680">+680 (Palau)</option><option value="+675">+675 (Papua New Guinea)</option><option value="+685">+685 (Samoa)</option><option value="+677">+677 (Solomon Islands)</option><option value="+676">+676 (Tonga)</option><option value="+688">+688 (Tuvalu)</option><option value="+678">+678 (Vanuatu)</option>                  </select>                  <input type="tel" name="phone" class="form-input phone-field" data-placeholder-key="placeholder_phone" placeholder="XX XXX XXXX" required />                </div>              </div>            </div>            <div class="form-group-grid">              <div class="form-control-wrapper">                <label class="form-label" data-key="lbl_date">Data e Eventit *</label>                <input type="date" name="date" class="form-input" required/>              </div>              <div class="form-control-wrapper">                <label class="form-label" data-key="lbl_time">Ora e Eventit *</label>                <input type="time" name="time" class="form-input" required/>              </div>            </div>            <div class="form-control-wrapper full-width mb-6">              <label class="form-label" data-key="lbl_type">Lloji i Eventit *</label>              <select name="event_type" class="form-input" required style="width: 100%; height: 50px;">                <option value="" disabled selected data-key="opt_choose">Zgjidhni llojin...</option>                <option value="wedding" data-key="opt_wedding">Dasme Luksoze</option>                <option value="club" data-key="opt_club">Club / Nightlife</option>                <option value="corporate" data-key="opt_corporate">Event Korporate</option>                <option value="festival" data-key="opt_festival">Festival / Concert</option>              </select>            </div>            <div class="form-control-wrapper full-width mb-6">              <label class="form-label" data-key="lbl_message">Mesazhi ose Kerkesa Specifike</label>              <textarea name="message" class="form-input" data-placeholder-key="placeholder_message" placeholder="Na tregoni me shume..."></textarea>            </div>            <button type="submit" class="btn-submit w-full py-4 rounded-xl font-bold transition flex items-center justify-center gap-2" id="submitBtn" data-key="btn_submit">              Dergo Rezervimin <i class="fa-solid fa-paper-plane"></i>            </button>          </form>        </div>      </div>    </section>        <footer class="py-12 border-t border-white/5 text-center bg-[#050505]">      <div class="text-2xl font-black tracking-[0.2em] text-white mb-3 uppercase">          DJ KRENY<span class="text-amber-500">.</span>      </div>      <div class="h-[1px] w-22 bg-gradient-to-r from-transparent via-amber-500/40 to-transparent mx-auto mb-4"></div>      <div class="text-xs italic text-gray-400/80 font-light tracking-wide px-4 max-w-xl mx-auto leading-relaxed" data-key="footer_credits">        &copy; 2026 DJ KRENY. All Rights Reserved. Crafted for Ultimate Entertainment Experience.      </div>    </footer>  </div> <!-- Mbyllja e site-wrapper -->  <!-- Lightbox -->  <div id="lightbox" class="fixed inset-0 z-[999] bg-black/95 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">    <button onclick="mbyllLightbox()" class="absolute top-8 right-8 text-white text-5xl z-[1000] hover:text-amber-500 transition cursor-pointer">        <i class="fas fa-times-circle"></i>    </button>    <div id="lightboxContent" class="relative max-w-[90%] max-h-[80%] flex items-center justify-center scale-95 transition-transform duration-300">        <video id="lightboxVideo" controls muted loop autoplay class="w-full h-full rounded-2xl shadow-2xl border border-white/10">            <source src="" type="video/mp4">        </video>    </div>  </div>  <!-- Tabela e Warning -->  <div id="copyWarning" class="fixed inset-0 flex items-center justify-center bg-black/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-all duration-300">    <div class="bg-[#111] border border-amber-500/30 rounded-2xl p-6 text-center max-w-xs mx-4">        <h2 class="text-amber-500 text-xl font-bold mb-2">VEPRIM I NDALUAR</h2>        <p class="text-gray-300 text-sm">Ky veprim nuk mund te kryhet.</p>    </div>  </div>  <script src="script.js"></script></body></html>
