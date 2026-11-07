@@ -1,1 +1,148 @@
-document.addEventListener('DOMContentLoaded', () => {        // Mbyllja globale e lightbox    window.mbyllLightbox = function() {        const lb = document.getElementById('lightbox');        const lbVid = document.getElementById('lightboxVideo');        const lbCont = document.getElementById('lightboxContent');        if(lb && lbVid && lbCont) {            lb.style.opacity = '0';            lb.style.pointerEvents = 'none';            lbCont.style.transform = 'scale(0.95)';            lbVid.pause();            lbVid.src = "";        }    };    // Hapja e lightbox nga klikimet mbi video    document.querySelectorAll('.lightbox-trigger').forEach(item => {        item.addEventListener('click', function() {            const lb = document.getElementById('lightbox');            const lbVid = document.getElementById('lightboxVideo');            const lbCont = document.getElementById('lightboxContent');            const vSrc = this.getAttribute('data-video-src');            if(lb && lbVid && lbCont && vSrc) {                lbVid.src = vSrc;                lb.style.opacity = '1';                lb.style.pointerEvents = 'auto';                lbCont.style.transform = 'scale(1)';                lbVid.play();            }        });    });    // Mbyllja e dritares nese klikohet ne pjesen e zeze jashte videos    const lightbox = document.getElementById('lightbox');    if(lightbox) {        lightbox.addEventListener('click', function(e) {            if (e.target === this) mbyllLightbox();        });    }    // SISTEMI I PERKTHIMIT (TRANSLATIONS)    const translations = {        en: {            services: "SERVICES", nav_videos: "VIDEOS", book: "BOOK", hero_title: "ENERGY & PASSION",            hero_subtitle: "ENERGY <br> <span class='text-amber-500'>& PASSION</span>",            hero_btn: "BOOK NOW", wedding_title: "WEDDING", wedding_desc: "Unique atmosphere for your most important night.",            nightlife_title: "NIGHTLIFE", nightlife_desc: "Maximum energy in the best clubs.",            events_title_main: "EVENTS", events_desc: "Music for every party and private anniversary.",            insta_title: "FEEL THE <span class='text-amber-500'>ATMOSPHERE</span>",            vid_sub: "Media Production", vid_title: "Live <span>Performances</span> & Recaps",            contact_sub: "Booking Office", contact_title: "Let's Create <span class='text-amber-500'>Magic</span>",            contact_desc: "Ready to secure a unique musical experience for your event? Contact us directly or fill out the booking form.",                        call_us: "Call us directly",                        send_email: "Send official email",                        location: "Main location",            contact_loc: "Fier, Albania",             lbl_name: "Full Name *", lbl_phone: "Phone Number *",            lbl_date: "Event Date *", lbl_time: "Event Time *", lbl_type: "Event Type *",            lbl_message: "Message or Specific Requests", btn_submit: "Send Reservation",            opt_choose: "Choose type...",            opt_wedding: "Wedding", opt_club: "Club / Nightlife", opt_corporate: "Event / Birthday Party", opt_festival: "Festival / Concert",            placeholder_name: "First/Last Name",            placeholder_phone: "Phone number...",            placeholder_message: "Tell us more about your event...",            footer_credits: "&copy; 2026 DJ KRENY. All Rights Reserved. Crafted for Ultimate Entertainment Experience.",            swal_title: "SUCCESS!  ", swal_text: "Your booking request has been submitted successfully!"        },        sq: {            services: "SHERBIME", nav_videos: "VIDEO", book: "REZERVO", hero_title: "ENERGJI & PASION",            hero_subtitle: "ENERGJI <br> <span class='text-amber-500'>& PASION</span>",            hero_btn: "REZERVO TANI", wedding_title: "DASMA", wedding_desc: "Atmosfere unike per naten tuaj me te rendesishme.",            nightlife_title: "NIGHTLIFE", nightlife_desc: "Energji maksimale ne klubet me te mira.",            events_title_main: "EVENTET", events_desc: "Muzike per cdo feste dhe event privat.",            insta_title: "NDJENI <span class='text-amber-500'>ATMOSFEREN</span>",            vid_sub: "Produksion Media", vid_title: "Performanca <span>Live</span> & Recaps",            contact_sub: "Zyre Rezervimi", contact_title: "Le te Krijojme <span class='text-amber-500'>Magji</span>",            contact_desc: "Gati per te siguruar nje eksperience muzikore unike per eventin tuaj? Na kontaktoni direkt ose plotesoni formen e rezervimit.",                        call_us: "Na telefono direkt",                        send_email: "Dergo Email zyrtar",                        location: "Vendndodhja kryesore",              contact_loc: "Fier, Shqiperi",             lbl_name: "Emri Plote *", lbl_phone: "Numri i Telefonit *",            lbl_date: "Data e Eventit *", lbl_time: "Ora e Eventit *", lbl_type: "Lloji i Eventit *",            lbl_message: "Mesazhi ose Kerkesa Specifike", btn_submit: "Dergo Rezervimin",            opt_choose: "Zgjidhni llojin...",            opt_wedding: "Dasme", opt_club: "Club / Nightlife", opt_corporate: "Event / Ditelindje", opt_festival: "Festival / Koncert",            placeholder_name: "Emer Mbiemer",            placeholder_phone: "XX XXX XXXX",            placeholder_message: "Na tregoni me shume per eventin tuaj...",            footer_credits: "&copy; 2026 DJ KRENY. All Rights Reserved. Crafted for Ultimate Entertainment Experience.",            swal_title: "SUKSES!  ", swal_text: "Veprimi u krye me sukses. Rezervimi juaj u dergua!"        }    };    window.updateLanguage = function(lang) {        document.querySelectorAll('[data-key]').forEach(el => {            const key = el.getAttribute('data-key');            if (translations[lang] && translations[lang][key]) {                el.innerHTML = translations[lang][key];            }        });        document.querySelectorAll('[data-placeholder-key]').forEach(el => {            const key = el.getAttribute('data-placeholder-key');            if (translations[lang] && translations[lang][key]) {                el.placeholder = translations[lang][key];            }        });    };    window.setLang = function(lang) {        localStorage.setItem("lang", lang);        updateLanguage(lang);        document.body.style.transition = "opacity 0.2s";        document.body.style.opacity = "0.8";        setTimeout(() => { document.body.style.opacity = "1"; }, 150);        updateActiveLang(lang);    };    function updateActiveLang(lang) {        const btnSq = document.getElementById("btn-sq");        const btnEn = document.getElementById("btn-en");        if(btnSq && btnEn) {            btnSq.classList.remove("active"); btnEn.classList.remove("active");            if(lang === "sq") btnSq.classList.add("active"); else btnEn.classList.add("active");        }    }    // HIQET PRELOADER KUR FAQJA NGARKOHET    const loader = document.getElementById('preloader');    setTimeout(() => { if(loader) loader.classList.add('loaded'); }, 800);    // Inicializimi i gjuhes se ruajtur ose default (sq)    const savedLang = localStorage.getItem("lang") || "sq";    updateLanguage(savedLang);    updateActiveLang(savedLang);    // MBROJTJA NDAJ KOPJIMIT P�RMBIR�SUAR (ANTI-COPY ELEGANTE)    const warning = document.getElementById("copyWarning");    function showWarning() {        if(warning) {            warning.classList.remove("opacity-0", "pointer-events-none");            setTimeout(() => { warning.classList.add("opacity-0", "pointer-events-none"); }, 2000);        }    }    // Bllokimi i Klikimit t� Djatht� (PC) dhe shfaqja e Warning    document.addEventListener("contextmenu", (e) => {         if (e.target.closest('input, textarea, select')) return;        e.preventDefault();         showWarning();     });    // Bllokimi i tentativ�s me komand�n standarde Copy    document.addEventListener("copy", (e) => {        if (e.target.closest('input, textarea, select')) return;        e.preventDefault();        showWarning();    });    // Bllokimi i kombinimeve t� tastier�s (Ctrl+C, Ctrl+U, Ctrl+S)    document.addEventListener("keydown", (e) => {        if (e.target.closest('input, textarea, select')) return;        if ((e.ctrlKey && e.key === "c") || (e.ctrlKey && e.key === "u") || (e.ctrlKey && e.key === "s") || (e.metaKey && e.key === "c")) {             e.preventDefault();             showWarning();         }    });    // Ndalimi i selektimit fillestar n� nivel kodi JS    document.addEventListener("selectstart", (e) => {        if (!e.target.closest('input, textarea, select')) {            e.preventDefault();        }    });    // SENSORI I SHTYPJES S� GJAT� (LONG PRESS P�R CELULAR�)    let touchTimeout;    document.addEventListener("touchstart", (e) => {        // Mos blloko shtypjen n�p�r fusha shkrimi, butona ose linqe        if (e.target.closest('input, textarea, select, button, a')) return;                touchTimeout = setTimeout(() => {            showWarning();        }, 600); // 600 milisekonda shtypje e pal�vizur aktivizon tabel�n    }, { passive: true });    document.addEventListener("touchend", () => {        clearTimeout(touchTimeout);    });    document.addEventListener("touchmove", () => {        clearTimeout(touchTimeout);    });    // ANIMACIONET REVEAL (IntersectionObserver)    const elements = document.querySelectorAll('.reveal');    if (elements.length > 0) {        const observer = new IntersectionObserver((entries) => {            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });        }, { threshold: 0.1 });        elements.forEach(el => observer.observe(el));    }    // D�RGIMI I FORM�S N� FORMSPREE    const form = document.getElementById('bookingForm');    const subBtn = document.getElementById('submitBtn');    if (form) {        form.addEventListener('submit', function(e) {            e.preventDefault();            const currentLang = localStorage.getItem("lang") || "sq";            if (subBtn) {                 subBtn.disabled = true;                 subBtn.style.opacity = "0.6";             }            const formData = new FormData(form);            fetch(form.action, {                method: 'POST',                body: formData,                headers: { 'Accept': 'application/json' }            })            .then(response => {                if (response.ok) {                    if (typeof confetti !== 'undefined') {                        confetti({                             particleCount: 150,                             spread: 80,                             origin: { y: 0.6 },                             colors: ['#fbbf24', '#ffffff', '#f59e0b']                         });                    }                    if (typeof Swal !== 'undefined') {                        Swal.fire({                            title: translations[currentLang]?.swal_title || "SUKSES!",                            text: translations[currentLang]?.swal_text || "Veprimi u krye me sukses. Rezervimi juaj u dergua!",                            icon: 'success',                            background: '#111111',                             color: '#ffffff',                             confirmButtonColor: '#fbbf24',                             confirmButtonText: 'OK'                        });                    }                    form.reset();                } else {                    throw new Error('Gabim gjate perpunimit ne server.');                }            })            .catch(err => {                console.error("Gabim gjate dergimit:", err);                if (typeof Swal !== 'undefined') {                    Swal.fire({                        title: currentLang === 'en' ? 'Error!' : 'Gabim!',                        text: currentLang === 'en' ? 'Something went wrong.' : 'Dicka shkoi gabim.',                        icon: 'error',                        background: '#111111',                        color: '#ffffff',                        confirmButtonColor: '#ef4444',                        confirmButtonText: 'OK'                    });                }            })            .finally(() => {                if (subBtn) {                     subBtn.disabled = false;                     subBtn.style.opacity = "1";                 }            });        });    }});
+document.addEventListener("DOMContentLoaded", () => {
+  const translations = {
+    sq: {
+      nav_experience: "Përvoja", nav_events: "Eventet", nav_performances: "Performanca", nav_contact: "Kontakt", nav_book: "Pyet për datën",
+      hero_kicker: "DJ · DASMA · EVENTE · FIER", hero_title: "Festa jote.<br><em>Ritmi i duhur.</em>",
+      hero_intro: "Muzikë e zgjedhur për njerëzit e tu dhe për momentet që doni t’i mbani mend, me energji, ritëm dhe kontroll gjatë gjithë festës.", hero_cta: "Flasim për eventin", hero_watch: "Shiko performancat", hero_fact: "Dasma dhe evente private",
+      live_label: "NGA NJË PERFORMANCË", media_caption: "Shiko atmosferën para se të rezervosh", hero_bottom: "Muzika e eventit tënd, e menduar bashkë.",
+      experience_label: "SI PUNOJMË", experience_title: "Muzika nuk është sfond.<br><em>Është pjesë e kujtimit.</em>",
+      experience_copy: "Çdo event ka njerëzit, ritmin dhe historinë e vet. Bisedojmë paraprakisht për atmosferën që dëshironi, pastaj ndërtojmë muzikën rreth saj dhe e përshtatim me publikun tuaj.",
+      experience_extra: "Për dasma, festa private, lokale dhe evente speciale, puna ime fillon me të kuptuarit e publikut, ritmit dhe momentit që duan të mbajnë në mend.",
+      experience_more: "Puna është e organizuar, e qartë dhe e personalizuar: nga momenti i parë i kontaktit, deri te lista e këngëve dhe ritmi i festës, me fokus te një atmosferë e qetë, energjike dhe të besueshme.",
+      step_one_title: "Na trego për eventin", step_one_copy: "Data, vendi dhe çfarë po festoni. Kaq mjafton për bisedën e parë.",
+      step_two_title: "Përcaktojmë muzikën", step_two_copy: "Flasim për shijet tuaja, të ftuarit dhe momentet që kanë rëndësi.",
+      step_three_title: "Konfirmojmë detajet", step_three_copy: "Pasi biem dakord për planin, koha dhe pritshmëritë janë të qarta.",
+      events_label: "RASTI YT", events_title: "Një festë e jotja.<br><em>Një plan muzikor i yti.</em>", events_intro: "Zgjidh rastin, pastaj flasim për detajet.",
+      event_wedding: "Dasma", event_wedding_copy: "Muzikë për hyrjet, momentet e veçanta dhe vallëzimin deri në fund të festës.",
+      event_private: "Festa private", event_private_copy: "Ditëlindje dhe mbledhje private me muzikë sipas shijes së grupit tuaj.",
+      event_club: "Club & evente", event_club_copy: "Sete për lokale, mbrëmje dhe evente ku muzika e mban atmosferën në lëvizje.", event_link: "Diskuto eventin",
+      performances_label: "PAMJE NGA PUNA", performances_title: "Shihe vetë.<br><em>Dëgjo atmosferën.</em>", performances_intro: "Klipet nga performancat japin një ide më të mirë se çdo premtim.",
+      clip_one: "Performancë", clip_two: "Atmosferë", clip_three: "Nga skena",
+      booking_label: "REZERVIM", booking_title: "Ke një datë?<br><em>Le ta diskutojmë.</em>",
+      booking_copy: "Dërgo datën, vendin, llojin e eventit dhe stilin që dëshiron. Do të të kthej një përgjigje të qartë për disponueshmërinë, ritmin e festës dhe mënyrën më të mirë për të ecur me atmosferën e eventit.", phone_label: "TELEFON", email_label: "EMAIL", whatsapp_label: "Shkruaj direkt", social_label: "Më gjen edhe këtu",
+      form_step: "KËRKESË PËR DISPONUESHMËRI", form_type: "FORMULAR DIREKT", lbl_name: "Emri dhe mbiemri", lbl_phone: "Numri i telefonit", lbl_date: "Data e eventit", lbl_type: "Lloji i eventit", lbl_location: "Qyteti / vendi", lbl_message: "Çfarë duhet të di për eventin?",
+      opt_choose: "Zgjidh një opsion", opt_wedding: "Dasmë", opt_private: "Festë private", opt_club: "Club / Event", opt_other: "Tjetër", btn_submit: "Dërgo kërkesën",
+      form_note: "Kërkesa nuk e konfirmon rezervimin. Do të kontaktohemi për të diskutuar disponueshmërinë.",
+      placeholder_name: "Emri yt", placeholder_location: "Ku mbahet?", placeholder_message: "Muzika, orari ose ndonjë detaj tjetër...", footer_line: "Muzika e eventit tënd, e menduar bashkë."
+    },
+    en: {
+      nav_experience: "The approach", nav_events: "Events", nav_performances: "Performances", nav_contact: "Contact", nav_book: "Check your date",
+      hero_kicker: "DJ · WEDDINGS · EVENTS · FIER", hero_title: "Your party.<br><em>Your kind of rhythm.</em>",
+      hero_intro: "Music chosen for your people and for the moments you want to remember, with energy, flow and control throughout the night.", hero_cta: "Tell me about your event", hero_watch: "Watch performances", hero_fact: "Weddings and private events",
+      live_label: "FROM A LIVE SET", media_caption: "See the atmosphere before you book", hero_bottom: "Your event’s music, planned together.",
+      experience_label: "THE APPROACH", experience_title: "Music is more than a backdrop.<br><em>It becomes part of the memory.</em>",
+      experience_copy: "Every event has its own people, pace and story. We talk through the atmosphere you want, then shape the music around it and adapt it to your crowd.",
+      experience_extra: "For weddings, private parties, venues and special events, I start by understanding the audience, the flow and the moments that need to be remembered.",
+      experience_more: "The work is organized, clear and tailored to your event: from the first message to the final track list and the energy of the night, with a focus on a smooth, confident and memorable atmosphere.",
+      step_one_title: "Tell me about the event", step_one_copy: "The date, the place and what you’re celebrating. That’s enough to start the conversation.",
+      step_two_title: "Plan the music", step_two_copy: "We talk about your taste, your guests and the moments that matter.",
+      step_three_title: "Confirm the details", step_three_copy: "Once we agree on the plan, the timing and expectations are clear.",
+      events_label: "YOUR OCCASION", events_title: "Your celebration.<br><em>Your music plan.</em>", events_intro: "Choose the occasion, then let’s talk details.",
+      event_wedding: "Weddings", event_wedding_copy: "Music for the entrance, the meaningful moments and the dancing right through the celebration.",
+      event_private: "Private parties", event_private_copy: "Birthdays and private gatherings with music shaped around your group.",
+      event_club: "Clubs & events", event_club_copy: "Sets for venues, nights out and events where music keeps the atmosphere moving.", event_link: "Discuss your event",
+      performances_label: "REAL PERFORMANCE CLIPS", performances_title: "See for yourself.<br><em>Feel the atmosphere.</em>", performances_intro: "Clips from real performances say more than a promise ever could.",
+      clip_one: "Performance", clip_two: "Atmosphere", clip_three: "On stage",
+      booking_label: "BOOKING", booking_title: "Have a date?<br><em>Let’s talk.</em>",
+      booking_copy: "Send the date, the venue, the type of event and the style you want. I’ll get back to you with a clear answer about availability, the flow of the night and the best way to shape the atmosphere of the event.", phone_label: "PHONE", email_label: "EMAIL", whatsapp_label: "Message directly", social_label: "Find me here too",
+      form_step: "AVAILABILITY REQUEST", form_type: "DIRECT ENQUIRY", lbl_name: "Full name", lbl_phone: "Phone number", lbl_date: "Event date", lbl_type: "Event type", lbl_location: "City / venue", lbl_message: "What should I know about the event?",
+      opt_choose: "Choose an option", opt_wedding: "Wedding", opt_private: "Private party", opt_club: "Club / event", opt_other: "Other", btn_submit: "Send request",
+      form_note: "This request does not confirm a booking. We’ll get in touch to discuss availability.",
+      placeholder_name: "Your name", placeholder_location: "Where is it?", placeholder_message: "Music, timing or anything else to know...", footer_line: "Your event’s music, planned together."
+    }
+  };
+
+  window.setLang = (lang) => {
+    const copy = translations[lang];
+    if (!copy) return;
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-key]").forEach((element) => {
+      const value = copy[element.dataset.key];
+      if (value) element.innerHTML = value;
+    });
+    document.querySelectorAll("[data-placeholder-key]").forEach((element) => {
+      const value = copy[element.dataset.placeholderKey];
+      if (value) element.placeholder = value;
+    });
+    document.querySelectorAll(".language-switch button").forEach((button) => {
+      const active = button.id === `btn-${lang}`;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    try { localStorage.setItem("dj-kreny-language", lang); } catch {}
+  };
+
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
+  const closeMenu = () => {
+    menuToggle?.setAttribute("aria-expanded", "false");
+    mainNav?.classList.remove("is-open");
+    document.body.classList.remove("menu-open");
+    if (menuToggle) menuToggle.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+  };
+
+  menuToggle?.addEventListener("click", () => {
+    const isOpen = menuToggle.getAttribute("aria-expanded") !== "true";
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    mainNav?.classList.toggle("is-open", isOpen);
+    document.body.classList.toggle("menu-open", isOpen);
+    menuToggle.innerHTML = isOpen
+      ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>'
+      : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+  });
+  mainNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenu();
+  });
+
+  let savedLanguage = "sq";
+  try { savedLanguage = localStorage.getItem("dj-kreny-language") || "sq"; } catch {}
+  window.setLang(savedLanguage);
+
+  const dateField = document.getElementById("field-date");
+  if (dateField) {
+    const today = new Date();
+    const localDate = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, "0"), String(today.getDate()).padStart(2, "0")].join("-");
+    dateField.min = localDate;
+  }
+
+  const year = document.getElementById("currentYear");
+  if (year) year.textContent = String(new Date().getFullYear());
+
+  const heroVideo = document.querySelector(".hero-video");
+  if (heroVideo && window.matchMedia("(prefers-reduced-motion: reduce)").matches) heroVideo.pause();
+
+  const form = document.getElementById("bookingForm");
+  const submitButton = document.getElementById("submitBtn");
+  const status = document.getElementById("formStatus");
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const lang = document.documentElement.lang;
+    if (submitButton) submitButton.disabled = true;
+    if (status) {
+      status.textContent = lang === "en" ? "Sending your request..." : "Kërkesa po dërgohet...";
+      status.classList.remove("is-error");
+    }
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      });
+      if (!response.ok) throw new Error("Request failed");
+      form.reset();
+      if (status) status.textContent = lang === "en"
+        ? "Thanks. Your request was sent; I’ll be in touch about availability."
+        : "Faleminderit. Kërkesa u dërgua; do të të kontaktoj për disponueshmërinë.";
+    } catch (error) {
+      if (status) {
+        status.textContent = lang === "en"
+          ? "The request could not be sent. Please call or message directly."
+          : "Kërkesa nuk u dërgua. Të lutem telefono ose shkruaj direkt.";
+        status.classList.add("is-error");
+      }
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
+  });
+});
