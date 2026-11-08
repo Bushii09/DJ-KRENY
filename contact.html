@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kontakt për rezervim te DJ KRENY.">
+  <title>Kontakt | DJ KRENY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css?v=site-audit-20261107">
+</head>
+<body class="contact-page">
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="DJ KRENY, faqja kryesore">
+      <span class="wordmark-icon" aria-hidden="true"><i class="fa-solid fa-wave-square"></i></span>
+      <span>DJ <strong>KRENY</strong><small>FIER · ALBANIA</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Hap menunë" aria-expanded="false" aria-controls="mainNav">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+    <nav class="main-nav" id="mainNav" aria-label="Navigimi kryesor">
+      <a href="index.html" data-key="nav_home">Home</a>
+      <a href="experience.html" data-key="nav_experience">Përvoja</a>
+      <a href="events.html" data-key="nav_events">Eventet</a>
+      <a href="gallery.html" data-key="nav_gallery">Galeria</a>
+      <a href="contact.html" class="is-current" data-key="nav_contact">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <div class="language-switch" aria-label="Zgjidh gjuhën">
+        <button type="button" id="btn-sq" data-lang="sq" class="is-active" aria-pressed="true">SQ</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" id="btn-en" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="header-booking" href="contact.html"><span data-key="nav_book">Pyet për datën</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </header>
+
+  <main class="contact-main page-shell">
+    <section class="contact-shell">
+      <div class="booking-copy">
+        <div class="section-label"><span>04</span><span data-key="booking_label">REZERVIM</span></div>
+        <h2 data-key="booking_title">Ke një datë?<br><em>Le ta diskutojmë.</em></h2>
+        <p data-key="contact_intro">Dërgo datën, vendin dhe stilin e eventit. Do të të kthej një përgjigje të qartë për ofertën, gatishmërinë dhe mënyrën më të mirë për të ndërtuar atmosferën e duhur.</p>
+        <div class="direct-contact">
+          <a href="tel:+355697508830"><span class="contact-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span><span><small data-key="phone_label">TELEFON</small><strong>+355 69 750 8830</strong></span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          <a href="mailto:djkreny87@gmail.com"><span class="contact-icon"><i class="fa-regular fa-envelope" aria-hidden="true"></i></span><span><small data-key="email_label">EMAIL</small><strong>djkreny87@gmail.com</strong></span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          <a href="https://wa.me/355697508830" target="_blank" rel="noopener noreferrer"><span class="contact-icon"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span><span><small>WHATSAPP</small><strong data-key="whatsapp_label">Shkruaj direkt</strong></span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <form class="booking-form" id="bookingForm" action="https://formspree.io/f/xnjrwypz" method="POST">
+        <div class="form-heading"><span data-key="form_step">KËRKESË PËR DISPONUESHMËRI</span><span data-key="form_type">FORMULAR DIREKT</span></div>
+        <label for="field-name" data-key="lbl_name">Emri dhe mbiemri</label>
+        <input id="field-name" type="text" name="name" autocomplete="name" placeholder="Emri yt" data-placeholder-key="placeholder_name" required>
+        <div class="form-row">
+          <div><label for="field-phone" data-key="lbl_phone">Numri i telefonit</label><input id="field-phone" type="tel" name="phone" autocomplete="tel" placeholder="+355 ..." required></div>
+          <div><label for="field-date" data-key="lbl_date">Data e eventit</label><input id="field-date" type="date" name="date" required></div>
+        </div>
+        <div class="form-row">
+          <div><label for="field-type" data-key="lbl_type">Lloji i eventit</label><select id="field-type" name="event_type" required><option value="" disabled selected data-key="opt_choose">Zgjidh një opsion</option><option value="wedding" data-key="opt_wedding">Dasmë</option><option value="private" data-key="opt_private">Festë private</option><option value="club" data-key="opt_club">Club / Event</option><option value="other" data-key="opt_other">Tjetër</option></select></div>
+          <div><label for="field-location" data-key="lbl_location">Qyteti / vendi</label><input id="field-location" type="text" name="location" placeholder="Ku mbahet?" data-placeholder-key="placeholder_location"></div>
+        </div>
+        <label for="field-message" data-key="lbl_message">Çfarë duhet të di për eventin?</label>
+        <textarea id="field-message" name="message" rows="3" placeholder="Muzika, orari ose ndonjë detaj tjetër..." data-placeholder-key="placeholder_message"></textarea>
+        <button class="button button-lime" id="submitBtn" type="submit"><span data-key="btn_submit">Dërgo kërkesën</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+        <p class="form-note" data-key="form_note">Kërkesa nuk e konfirmon rezervimin. Do të kontaktohemi për të diskutuar disponueshmërinë.</p>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="wordmark footer-mark" href="index.html"><span class="wordmark-icon" aria-hidden="true"><i class="fa-solid fa-wave-square"></i></span><span>DJ <strong>KRENY</strong><small>FIER · ALBANIA</small></span></a>
+    <p data-key="footer_line">Muzika e eventit tënd, e menduar bashkë.</p>
+    <span class="footer-copy">© <span id="currentYear">2026</span> DJ KRENY</span>
+  </footer>
+  <script src="script.js?v=site-audit-20261107"></script>
+</body>
+</html>
